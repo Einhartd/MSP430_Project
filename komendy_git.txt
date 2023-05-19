@@ -11,6 +11,9 @@ git commit -am - (dziala tylko dla edycji zawartosci) add i commit wraz z koment
 git config --global user.name <imie>
 git config --global user.email <email>
 git checkout-b"nazwa brancha" - tworzy nowego brancha i kopiuje pliki z mastera
+git push - wyslanie plikow do repozytorium
+git push --set-upstream origin "nazwa brancha"  -   push nowego brancha do repo
+git pull    -   pobranie nowych danych z repo na working dir
 
 
 **	komendy z linuxa dzialaja w gicie	**
