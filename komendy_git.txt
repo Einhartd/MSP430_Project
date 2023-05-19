@@ -1,0 +1,21 @@
+git log- przedstawia logowania commitów użytkowników
+git status - pokazuje status plików w repo
+touch <nazwa i rozszerzenie> - stworzenie pliku w repo
+git init - inicjalizacja repo
+ls - wskazanie plikow w folderze (linux)
+git add <nazwa pliku i rozszerzenie> - przeniesienie pliku do staging area
+-A - dopisek dajacy mozliwosc dodania wszystkich zmian do staging area naraz
+git branch - wskazuje na wszystkie branche w repo oraz ten w ktorym jestesmy 
+git commit -m - wykonanie commitu pliku i nadanie wiadomosci
+git commit -am - (dziala tylko dla edycji zawartosci) add i commit wraz z komentarzem
+git config --global user.name <imie>
+git config --global user.email <email>
+git checkout-b"nazwa brancha" - tworzy nowego brancha i kopiuje pliki z mastera
+
+
+**	komendy z linuxa dzialaja w gicie	**
+
+**	komendy VIM	**
+klawisz 'a' umozliwia edytowanie tekstu
+klawisz 'esc' wyjscie z trybu edycji
+:wq wyjscie z wim
