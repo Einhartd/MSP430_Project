@@ -1,3 +1,5 @@
+#include "screen.h"
+
 void delay(int length){
   int a = length;
   while(a != 0){

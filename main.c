@@ -1,18 +1,6 @@
 #include "io430.h"
 #include "screen.h"
-
-
-//  Buttons defines
-#define BUTTON0 0
-#define BUTTON1 1
-#define BUTTON2 2
-#define BUTTON3 3
-#define ENCODER_LEFT 4  //To check
-#define ENCODER_RIGHT 5 //To check
-#define RESET_INTERRUPT_FLAG 0x00
-#define BUTTON_DIR 0x00
-#define BUTTON_INTERRUPT 0x08
-#define ENCODER_INTERRUPT 0x02
+#include "buttons.h"
 
 
 //  Time defines
@@ -23,7 +11,6 @@
 #define DEFAULT_DAY 0
 #define DEFAULT_HOUR 0
 #define DEFAULT_MINUTE 0
-
 
 //  Static time
 static int menu = DEFAULT_MENU;
@@ -37,17 +24,6 @@ static int minute = DEFAULT_MINUTE;
 void set_time(int button);
 void set_settings(void);
 void confirm_settings(void);
-
-
-
-
-//  INITIALIZE BUTTONS FUNCS
-void initialize_buttons(void);
-void initialize_encoder(void);
-//  END OF INITIALIZE BUTTONS FUNCS
-
-//  FUNC WHICH DETECTS PRESSED BUTTON
-int check_pressed_button(void);
 
 void test_the_buttons(int button);
 
@@ -68,8 +44,6 @@ int main(void)
   initDisplay();
   clearDisplay();
   sendStr("menu glowne");
-  
-
 
   WDTCTL = (WDTPW | WDTHOLD);                    // Stop watchdog timer
 
@@ -93,51 +67,7 @@ __interrupt void port1_int(void)
   P1IFG = RESET_INTERRUPT_FLAG; //zerujemy flagi przerwan od enkodera i przyciskow
 }
 
-
 // Screen functions
-
-
-
-void initialize_buttons(void){
-  P1DIR = BUTTON_DIR;         // Ustawienie trybu wejsca przyciskow
-  P1IE = BUTTON_INTERRUPT;    // przerwania od przyciskow (maska)
-  P1IES = BUTTON_INTERRUPT;   // przerwania od przyciskow
-}
-
-void initialize_encoder(void){
-  P1IE |= ENCODER_INTERRUPT;          //sciagniecie maski przerwan od enkodera
-  P1IES |= ENCODER_INTERRUPT;         //wybieramy reakcje na zbocze opadajace
-}
-
-int check_pressed_button(void){
-  if (P4IN_bit.P3==0)
-  {
-    return BUTTON0;
-  }
-  else if (P4IN_bit.P2==0)
-  {
-    return BUTTON1;
-  }
-  else if (P4IN_bit.P1==0)
-  {
-    return BUTTON2;
-  }
-  else if (P4IN_bit.P0==0)
-  {
-    return BUTTON3;
-  }
-  else
-  {
-    if(P1IN_bit.P2==0)
-    {
-      return ENCODER_LEFT;
-    }
-    else
-    {
-      return ENCODER_RIGHT;
-    }
-  }
-}
 
 void test_the_buttons(int button){
   switch (button)
